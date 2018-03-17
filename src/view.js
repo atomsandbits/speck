@@ -39,7 +39,7 @@ var newView = module.exports.new = function() {
 };
 
 
-var center = module.exports.center = function(v, system) {
+var center = module.exports.center = function(v, system, zoomRatio=1) {
     var maxX = -Infinity;
     var minX = Infinity;
     var maxY = -Infinity;
@@ -60,7 +60,7 @@ var center = module.exports.center = function(v, system) {
     v.translation.x = cx;
     v.translation.y = cy;
     var scale = Math.max(maxX - minX, maxY - minY);
-    v.zoom = 1/(scale * 1.01);
+    v.zoom = zoomRatio/(scale * 1.01);
 };
 
 
@@ -137,8 +137,6 @@ var getRect = module.exports.getRect = function(v) {
 
 
 var getBondRadius = module.exports.getBondRadius = function(v) {
-    return v.bondScale * v.atomScale * 
+    return v.bondScale * v.atomScale *
         (1 + (consts.MIN_ATOM_RADIUS - 1) * v.relativeAtomScale);
 };
-
-

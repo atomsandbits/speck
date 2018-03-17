@@ -1,18 +1,41 @@
 {
-  "name": "speck",
-  "version": "0.0.0",
-  "description": "",
-  "main": "index.js",
-  "dependencies": {
-    "brfs": "~1.2.0",
-    "jquery": "^2.1.3",
-    "keyboardjs": "^0.4.2",
-    "lz-string": "^1.4.1"
-  },
-  "devDependencies": {},
+  "name": "speck-renderer",
+  "version": "0.0.8",
+  "description": "Browser-based WebGL molecule renderer with the goal of producing figures that are as attractive as they are practical.",
+  "main": "dist/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "compile": "rimraf dist/ && babel ./ --out-dir dist/ --ignore ./node_modules,./.babelrc,./package.json,./npm-debug.log,./.gitignore,./.npmignore,./demo,./min,./package-lock.json,./LICENSE,./README.md,./images.md --copy-files && browserify dist/index.js | uglifyjs > min/speck.min.js",
+    "prepublish": "npm run compile",
+    "start": "node demo/index.js",
+    "dev": "nodemon --ignore min/ --ignore dist/ --exec 'npm run compile && npm start'"
   },
-  "author": "",
-  "license": "MIT"
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jordangarside/speck.git"
+  },
+  "keywords": [
+    "Molecule",
+    "Renderer",
+    "Atomic",
+    "Structure"
+  ],
+  "author": "Jordan Garside",
+  "license": "Unlicense",
+  "bugs": {
+    "url": "https://github.com/jordangarside/speck/issues"
+  },
+  "homepage": "https://github.com/jordangarside/speck#readme",
+  "dependencies": {
+    "dat.gui": "github:dataarts/dat.gui"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babel-preset-latest": "^6.24.1",
+    "browserify": "^14.5.0",
+    "express": "^4.16.2",
+    "rimraf": "^2.6.2",
+    "uglify-js": "^3.2.0"
+  }
 }

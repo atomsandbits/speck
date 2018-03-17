@@ -1,3 +1,4 @@
+const dofShader = `\
 #version 100
 precision highp float;
 
@@ -111,4 +112,5 @@ void main() {
     }
 
     gl_FragColor = sample/count;
-}
+}`
+export default dofShader;

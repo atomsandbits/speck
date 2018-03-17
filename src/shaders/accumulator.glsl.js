@@ -1,3 +1,4 @@
+const accumulatorShader = `\
 #version 100
 precision highp float;
 
@@ -62,7 +63,9 @@ void main() {
     } else {
         acc.a += ao/255.0;
     }
-        
+
     gl_FragColor = acc;
 
-}
+}`
+
+export default accumulatorShader;

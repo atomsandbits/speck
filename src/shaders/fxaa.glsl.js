@@ -1,3 +1,4 @@
+const fxaaShader = `\
 #version 100
 precision highp float;
 
@@ -50,10 +51,10 @@ void main() {
 
     dir = min(vec2(FXAA_SPAN_MAX, FXAA_SPAN_MAX), max(vec2(-FXAA_SPAN_MAX, -FXAA_SPAN_MAX), dir * rcpDirMin)) / uRes;
 
-    vec4 rgbA = (1.0/2.0) * 
-        (texture2D(uTexture, texCoords.xy + dir * (1.0/3.0 - 0.5)) + 
+    vec4 rgbA = (1.0/2.0) *
+        (texture2D(uTexture, texCoords.xy + dir * (1.0/3.0 - 0.5)) +
          texture2D(uTexture, texCoords.xy + dir * (2.0/3.0 - 0.5)));
-    vec4 rgbB = rgbA * (1.0/2.0) + (1.0/4.0) * 
+    vec4 rgbB = rgbA * (1.0/2.0) + (1.0/4.0) *
         (texture2D(uTexture, texCoords.xy + dir * (0.0/3.0 - 0.5)) +
          texture2D(uTexture, texCoords.xy + dir * (3.0/3.0 - 0.5)));
     float lumaB = dot(rgbB, luma);
@@ -64,4 +65,5 @@ void main() {
         gl_FragColor = rgbB;
     }
 
-}
+}`
+export default fxaaShader;

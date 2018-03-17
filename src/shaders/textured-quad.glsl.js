@@ -1,3 +1,4 @@
+const texturedQuadShader = `\
 #version 100
 precision highp float;
 
@@ -19,4 +20,5 @@ uniform float uRes;
 
 void main() {
     gl_FragColor = texture2D(uTexture, gl_FragCoord.xy/uRes);
-}
+}`
+export default texturedQuadShader;

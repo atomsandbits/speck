@@ -1,3 +1,4 @@
+const blurShader = `\
 #version 100
 precision highp float;
 
@@ -33,4 +34,5 @@ void main() {
     }
     sample /= float(range) * 2.0 + 1.0;
     gl_FragColor = sample;
-}
+}`
+export default blurShader;

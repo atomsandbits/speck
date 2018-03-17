@@ -1,3 +1,4 @@
+const aoShader = `\
 #version 100
 precision highp float;
 
@@ -42,4 +43,6 @@ void main() {
     float shade = max(0.0, 1.0 - (dAccum.r + dAccum.g + dAccum.b + dAccum.a) * 0.25 * uAO);
     shade = pow(shade, 2.0);
     gl_FragColor = vec4(uBrightness * sceneColor.rgb * shade, sceneColor.a);
-}
+}`
+
+export default aoShader;

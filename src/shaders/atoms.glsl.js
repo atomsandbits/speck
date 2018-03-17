@@ -1,3 +1,4 @@
+const atomsShader = `\
 #version 100
 precision highp float;
 
@@ -71,4 +72,6 @@ void main() {
         gl_FragColor = vec4(normal * 0.5 + 0.5, 1.0);
     }
     gl_FragDepthEXT = -coord.z/uDepth;
-}
+}`
+
+export default atomsShader;

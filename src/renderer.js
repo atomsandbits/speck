@@ -2,11 +2,19 @@
 
 var glm = require('./gl-matrix');
 var webgl = require('./webgl.js');
-var fs = require('fs');
 var cube = require("./cube");
 var elements = require("./elements");
 var View = require("./view");
 var System = require("./system");
+
+import accumulatorShader from "./shaders/accumulator.glsl.js";
+import aoShader from "./shaders/ao.glsl.js";
+import atomsShader from "./shaders/atoms.glsl.js";
+import blurShader from "./shaders/blur.glsl.js";
+import bondsShader from "./shaders/bonds.glsl.js";
+import dofShader from "./shaders/dof.glsl.js";
+import fxaaShader from "./shaders/fxaa.glsl.js";
+import texturedQuadShader from "./shaders/textured-quad.glsl.js";
 
 module.exports = function (canvas, resolution, aoResolution) {
 
@@ -16,7 +24,7 @@ module.exports = function (canvas, resolution, aoResolution) {
             samples,
             system;
 
-        var gl, 
+        var gl,
             canvas;
 
         var rAtoms = null,
@@ -63,6 +71,7 @@ module.exports = function (canvas, resolution, aoResolution) {
 
             // Initialize canvas/gl.
             canvas.width = canvas.height = resolution;
+
             gl = canvas.getContext('webgl');
             gl.enable(gl.DEPTH_TEST);
             gl.enable(gl.CULL_FACE);
@@ -73,20 +82,20 @@ module.exports = function (canvas, resolution, aoResolution) {
             window.gl = gl; //debug
 
             ext = webgl.getExtensions(gl, [
-                "EXT_frag_depth", 
-                "WEBGL_depth_texture", 
+                "EXT_frag_depth",
+                "WEBGL_depth_texture",
             ]);
 
             self.createTextures();
 
             // Initialize shaders.
-            progAtoms = loadProgram(gl, fs.readFileSync(__dirname + "/shaders/atoms.glsl", 'utf8'));
-            progBonds = loadProgram(gl, fs.readFileSync(__dirname + "/shaders/bonds.glsl", 'utf8'));
-            progDisplayQuad = loadProgram(gl, fs.readFileSync(__dirname + "/shaders/textured-quad.glsl", 'utf8'));
-            progAccumulator = loadProgram(gl, fs.readFileSync(__dirname + "/shaders/accumulator.glsl", 'utf8'));
-            progAO = loadProgram(gl, fs.readFileSync(__dirname + "/shaders/ao.glsl", 'utf8'));
-            progFXAA = loadProgram(gl, fs.readFileSync(__dirname + "/shaders/fxaa.glsl", 'utf8'));
-            progDOF = loadProgram(gl, fs.readFileSync(__dirname + "/shaders/dof.glsl", 'utf8'));
+            progAtoms = loadProgram(gl, atomsShader);
+            progBonds = loadProgram(gl, bondsShader);
+            progDisplayQuad = loadProgram(gl, texturedQuadShader);
+            progAccumulator = loadProgram(gl, accumulatorShader);
+            progAO = loadProgram(gl, aoShader);
+            progFXAA = loadProgram(gl, fxaaShader);
+            progDOF = loadProgram(gl, dofShader);
 
             var position = [
                 -1, -1, 0,

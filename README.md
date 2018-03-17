@@ -1,58 +1,57 @@
 # Speck
+> Speck is a molecule renderer with the goal of producing figures that are as attractive as they are practical. Express your molecule clearly _and_ with style.
 
-Speck is a molecule renderer with the goal of producing figures that are as attractive as they are practical. Express your molecule clearly _and_ with style.
+[![NPM Version](https://img.shields.io/npm/v/speck-renderer.svg?style=flat-square)](https://www.npmjs.com/package/speck-renderer)
+[![Downloads Stats](https://img.shields.io/npm/dw/speck-renderer.svg?style=flat-square)](https://www.npmjs.com/package/speck-renderer)
+[![Waffle.io - Columns and their card count](https://badge.waffle.io/jordangarside/speck.svg?columns=In%20Progress,Done&style=flat-square)](https://waffle.io/jordangarside/speck)
+
+[Demo](https://speck-renderer.herokuapp.com/) - [Original Project](https://github.com/wwwtyro/speck) - [More Images](https://github.com/jordangarside/speck/blob/master/images.md)
 
 <p align="center">
   <img src="https://raw.githubusercontent.com/wwwtyro/speck/gh-pages/static/screenshots/demo-2.png">
 </p>
 
-## Try it live
+## Installation
 
-Try speck out live in your browser here: http://wwwtyro.github.io/speck/
 
-## Features
+```sh
+npm install --save speck-renderer
+```
 
-#### Ambient Occlusion
+## Usage example
 
-Ambient occlusion provides much more information about molecule structure than simple direct lighting. It's incredibly useful for large and small molecule viewing alike. Easily Speck's most important feature.
+```js
+speck = new Speck({canvasContainerID: "speck-root", canvasID: "speck-canvas"});
+speck.loadStructure(xyz);
+```
 
-<p align="center">
-  <img src="https://raw.githubusercontent.com/wwwtyro/speck/gh-pages/static/screenshots/demo-9.png">
-</p>
+```js
+speck.destroy();
+```
 
-#### Pixel-perfect atoms and bonds
+## Release History
 
-Speck renders atoms and bonds not with polygons, but with imposters. This means you can zoom in as close as you like and surfaces remain smooth, not faceted.
+* 0.0.7
+    * Work in progress
 
-<p align="center">
-  <img src="https://raw.githubusercontent.com/wwwtyro/speck/gh-pages/static/screenshots/demo-0.png">
-</p>
+## Meta
 
-#### Depth-aware outlines
+Jordan Garside – JordanGarside@gmail.com
 
-Speck can render atom outlines that are depth-aware. Instead of making your molecule appear to be a collection of flat circles, depth-aware outlines provide cues to the viewer that convey information about the molecular structure.
+Distributed under the Unlicense license. See ``LICENSE`` for more information.
 
-<p align="center">
-  <img src="https://raw.githubusercontent.com/wwwtyro/speck/gh-pages/static/screenshots/demo-5.png">
-</p>
+## Contributing
 
-#### Depth of field
+1. Fork it (<https://github.com/jordangarside/speck/fork>)
+2. Create your feature branch (`git checkout -b feature/fooBar`)
+3. Commit your changes (`git commit -am 'Add some fooBar'`)
+4. Push to the branch (`git push origin feature/fooBar`)
+5. Create a new Pull Request
 
-Render a more attractive figure while simultaneously drawing your viewer's eye to a region you want to highlight.
-
-<p align="center">
-  <img src="https://raw.githubusercontent.com/wwwtyro/speck/gh-pages/static/screenshots/demo-1.png">
-</p>
-
-#### Mix and match rendering options
-
-Speck goes to great lengths to decouple rendering options, so that you have the flexibility to present your data in the most clear and attractive way.
-
-<p align="center">
-  <img src="https://raw.githubusercontent.com/wwwtyro/speck/gh-pages/static/screenshots/demo-3.png">
-  <img src="https://raw.githubusercontent.com/wwwtyro/speck/gh-pages/static/screenshots/demo-6.png">
-  <img src="https://raw.githubusercontent.com/wwwtyro/speck/gh-pages/static/screenshots/demo-4.png">
-  <img src="https://raw.githubusercontent.com/wwwtyro/speck/gh-pages/static/screenshots/demo-7.png">
-  <img src="https://raw.githubusercontent.com/wwwtyro/speck/gh-pages/static/screenshots/demo-8.png">
-</p>
-
+<!-- Markdown link & img dfn's -->
+[npm-image]: https://img.shields.io/npm/v/datadog-metrics.svg?style=flat-square
+[npm-url]: https://npmjs.org/package/datadog-metrics
+[npm-downloads]: https://img.shields.io/npm/dm/datadog-metrics.svg?style=flat-square
+[travis-image]: https://img.shields.io/travis/dbader/node-datadog-metrics/master.svg?style=flat-square
+[travis-url]: https://travis-ci.org/dbader/node-datadog-metrics
+[wiki]: https://github.com/yourname/yourproject/wiki

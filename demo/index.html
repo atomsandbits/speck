@@ -1,0 +1,55 @@
+<head>
+  <script src="/speck.min.js"></script>
+  <style>
+    .container {
+      display: flex;
+      justify-content: center;
+    }
+    #speck-container-custom {
+      width: 1024px;
+      height: 512px;
+      overflow: hidden;
+    }
+    #speck-canvas-custom {
+      width: 100%;
+      margin-top: -25%;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <div align="center">
+      <h1>Default</h1>
+      <div id="speck-container">
+        <canvas id="speck-canvas"></canvas>
+      </div>
+    </div>
+    <div align="center">
+      <h1>Custom View Size</h1>
+      <div id="speck-container-custom">
+        <canvas id="speck-canvas-custom"></canvas>
+      </div>
+    </div>
+</body>
+<footer>
+  <script>
+    // Standard Square Render
+    speck = new Speck({
+      canvasContainerID: "speck-container",
+      canvasID: "speck-canvas",
+    });
+    speck.gui.preset = "Cartoon";
+    speck.gui.preset = "BallAndStick";
+    // Custom View Size
+    speckCustom = new Speck({
+      canvasContainerID: "speck-container-custom",
+      canvasID: "speck-canvas-custom",
+      options: {
+        zoomRatio: 0.5,
+      }
+    });
+    speckCustom.gui.preset = "Default";
+    speckCustom.gui.__folders.Detail.__controllers[2].setValue(1024)
+  </script>
+</footer>
